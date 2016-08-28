@@ -1,0 +1,10 @@
+---
+
+- name: Install iodine from repos
+  apt: name=iodine state=present
+
+- name: Configure iodine
+  template: src=iodine.j2 dest=/etc/default/iodine owner=root group=root
+
+- name: Start iodine-server
+  service: name=iodined state=started enabled=yes
